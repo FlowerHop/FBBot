@@ -1,0 +1,26 @@
+{
+  "name": "fbbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "request": "^2.72.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FlowerHop/FBBot.git"
+  },
+  "author": "Flowerhop",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FlowerHop/FBBot/issues"
+  },
+  "homepage": "https://github.com/FlowerHop/FBBot#readme"
+}
