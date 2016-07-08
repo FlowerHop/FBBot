@@ -1,5 +1,6 @@
 'use strict';
 
+var https = require('https');
 var fs = require('fs');
 var path = require('path');
 var express = require('express');
@@ -7,6 +8,12 @@ var bodyParser = require('body-parser');
 var queryString = require('querystring');
 var request = require('request');
 var app = express();
+
+var options = {
+  ca: fs.readFileSync('cert/ca_bundle.crt'),
+  key: fs.readFileSync('cert/certificate.crt'),
+  cert: fs.readFileSync('cert/private.key')
+}
 
 app.set('port', process.env.PORT || 8000);
 app.use(bodyParser.json());
@@ -39,6 +46,7 @@ app.get ('/webhook', function (req, res) {
   res.end ();
 });
 
-app.listen(app.get('port'), function () {
+https.createServer(options, function (req, res) {
+//app.listen(app.get('port'), function () {
   console.log('Ready on port: ' + app.get('port'));
 });
