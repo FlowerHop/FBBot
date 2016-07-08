@@ -8,9 +8,10 @@ var queryString = require('querystring');
 var request = require('request');
 var app = express();
 
-app.set('port', process.env.PORT || 1338);
+app.set('port', process.env.PORT || 8000);
 app.use(bodyParser.json());
-app.use('/', express.static('public'));
+// app.use('/', express.static('public'));
+app.use('/.well-known', express.static('.well-known'));
 
 // Additional middleware which will set headers that we need on each request.
 app.use(function (req, res, next) {
