@@ -31,6 +31,10 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.get('/', function (req, res) {
+  res.status(200).json({"STATUS": "OK"});
+});
+
 app.get('/helloWorld', function (req, res) {
   res.send ("HelloWorld");
   res.end ();
