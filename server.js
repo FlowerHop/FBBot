@@ -10,9 +10,9 @@ var request = require('request');
 var app = express();
 
 var options = {
-  ca: fs.readFileSync('cert/ca_bundle.crt'),
-  key: fs.readFileSync('cert/certificate.crt'),
-  cert: fs.readFileSync('cert/private.key')
+  ca: fs.readFileSync('cert/ca_bundle.crt', 'utf8'),
+  key: fs.readFileSync('cert/private.key', 'utf8'),
+  cert: fs.readFileSync('cert/certificate.crt', 'utf8')
 }
 
 app.set('port', process.env.PORT || 8000);
@@ -46,7 +46,10 @@ app.get ('/webhook', function (req, res) {
   res.end ();
 });
 
-https.createServer(options, function (req, res) {
-//app.listen(app.get('port'), function () {
+https.createServer(options, app).listen (8001, function (req, res) {
+  console.log ('https on 8001 port');
+});
+
+app.listen(app.get('port'), function () {
   console.log('Ready on port: ' + app.get('port'));
 });
